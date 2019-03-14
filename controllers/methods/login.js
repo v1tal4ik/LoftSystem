@@ -8,6 +8,7 @@ module.exports = async(req,res,next)=>{
         .then(result=>{
         const hash = crypto.pbkdf2Sync(password,result.salt,100,256,'sha512').toString('hex');
           if (hash === result.password && username === result.username){
+            result.id = result._id;
             res.status(201).json(result);
           }
         },
