@@ -4,11 +4,11 @@ const db = require('../../models/db');
 module.exports = async(req,res,next)=>{
   const data = JSON.parse(req.body);
   const permissionId = data.permissionId;
-  db.updateUserPermission(permissionId,data.permission)
+  //console.log(data.permission);
+  db.updateUserPermission(permissionId,data.permission.chat)
     .then((result)=>{
       console.log(result);
-    },
-    (err)=>{
+    },err=>{
       console.log(err);
     })
 }

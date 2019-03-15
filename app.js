@@ -5,10 +5,13 @@ const fs = require('fs');
 const configDir = require('./config/upload.json');
 const port = process.env.PORT || 3000;
 
-
-
 const app = express();
 require('./models/index.js');
+const http = require('http');
+const server = http.createServer(app);
+
+const io = require('socket.io').listen(server);
+
 
 app.use(express.static(path.join(__dirname, './dist')))
     .use(bodyParser.urlencoded({extended:false}))
@@ -30,10 +33,26 @@ app.use(express.static(path.join(__dirname, './dist')))
         res.status(500).json({ err: '500', message: err.message });
       });    
 
-app.listen(port ,()=>{
+server.listen(port ,()=>{
     if(!fs.existsSync(configDir.uploadDir)){
         fs.mkdirSync(configDir.uploadDir);
     }
     console.log('Server running on port : 3000 ');
 });
+
+
+
+
+
+
+
+
+
+/*************** SOCKET **************************/
+
+
+io.on('connection', socket =>{
+    console.log('connection');
+});
+
 

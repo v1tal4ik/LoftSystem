@@ -24,7 +24,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Укажите отчество'],
     },
-    img: {
+    image: {
       type: String
     },
     access_token:{

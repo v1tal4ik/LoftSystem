@@ -11,5 +11,11 @@ router.put('/api/updateUserPermission/:id',controllers.updateUserPermission);
 router.put('/api/updateUser/:id',controllers.updateUserById);
 router.post('/api/saveUserImage/:id',controllers.saveUserImageById);
 
+router.get('/api/getNews',controllers.getNews);
+router.post('/api/newNews',controllers.newNews);
+router.delete('/api/deleteNews/:id',controllers.deleteNewsById);
+router.put('/api/updateNews/:id',controllers.updateNewsById);
+
+
 
 module.exports = router;
