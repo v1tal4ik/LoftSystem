@@ -31,6 +31,7 @@ module.exports.saveNewUser = function(obj) {
         surName:data.surName,
         middleName:data.middleName,
         img:data.img,
+        path:'',
         access_token:token,
         salt:salt,
         id:'',
@@ -73,5 +74,9 @@ module.exports.updateUserPermission = function(id,data){
 
 module.exports.updateUserInfo = function(id,data){
     return Users.findByIdAndUpdate(id,{password:data},{new:true});
-} 
+}
+
+module.exports.updateUserImg = function(id,image){
+    return Users.findByIdAndUpdate(id,{img:image},{new:true});
+}
   

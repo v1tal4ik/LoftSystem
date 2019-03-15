@@ -9,6 +9,7 @@ router.get('/api/getUsers',controllers.getUsers);
 router.delete('/api/deleteUser/:id',controllers.deleteUserById);
 router.put('/api/updateUserPermission/:id',controllers.updateUserPermission);
 router.put('/api/updateUser/:id',controllers.updateUserById);
+router.post('/api/saveUserImage/:id',controllers.saveUserImageById);
 
 
 module.exports = router;
