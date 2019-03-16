@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 const uuidv4 = require('uuid/v4');
 const crypto = require('crypto');
 const Users = require('./schemaUser');
-const News = require('./schemaNews');
 
-
-/*********USER *****************/
 module.exports.gets = function() {
     return Users.find();
   };
@@ -39,22 +36,22 @@ module.exports.saveNewUser = function(obj) {
         permissionId:permisId,
         permission:{
             chat:{
-                C:true,
-                R:true,
-                U:true,
-                D:true
+                C:data.permission.chat.C,
+                R:data.permission.chat.R,
+                U:data.permission.chat.U,
+                D:data.permission.chat.D
             },
             news:{
-                C:true,
-                R:true,
-                U:true,
-                D:true
+                C:data.permission.news.C,
+                R:data.permission.news.R,
+                U:data.permission.news.U,
+                D:data.permission.news.D
             },
             setting:{
-                C:true,
-                R:true,
-                U:true,
-                D:true
+                C:data.permission.setting.C,
+                R:data.permission.setting.R,
+                U:data.permission.setting.U,
+                D:data.permission.setting.D
             }
         }
     });
@@ -65,9 +62,12 @@ module.exports.deleteUserById = function(id){
     return Users.findOneAndDelete({_id:id});
 }
 
-module.exports.updateUserPermission = function(id,data){
-    console.log(data);
-    return Users.findOneAndUpdate({permissionId:id},{chat:data},{new:true});
+module.exports.updateUserPermission = function(permissionId,type,operation,value){
+     return Users.findOne({permissionId:permissionId},function(err,doc){
+        if(err){return err};
+         doc.permission[type][operation]= value;
+            return doc.save();
+    })
 } 
 
 module.exports.updateUserInfo = function(id,data){
@@ -78,34 +78,3 @@ module.exports.updateUserImg = function(id,image){
     return Users.findByIdAndUpdate(id,{image:image},{new:true});
 }
   
-
-
-
-/*******************NEWS *******************/
-module.exports.getsNews = function() {
-    return News.find();
-  };
-
-module.exports.saveNewNews = function(user,date,text,theme) {
-    const id =  Math.floor(1000000 + Math.random() * 900000);
-    const newNews = new News({
-        date:date,
-        text:text,
-        theme:theme,
-        user:user,
-        id:id
-    });
-    return newNews.save();
-  };  
-
-module.exports.deleteNewsById = function(id){
-    return News.findOneAndDelete({id:id});
-}
-
-module.exports.updateTextNewsById = function(id,text){
-    return News.findOneAndUpdate({id:id},{text:text},{new:true});
-}
-
-module.exports.updateThemeNewsById = function(id,theme){
-    return News.findOneAndUpdate({id:id},{theme:theme},{new:true});
-}

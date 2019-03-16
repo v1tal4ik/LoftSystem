@@ -1,4 +1,4 @@
-const db = require('../../models/db');
+const db = require('../../../models/User/db_User');
 
 module.exports = async(req,res,next)=>{
     db.saveNewUser(req.body)

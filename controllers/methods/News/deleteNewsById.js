@@ -1,4 +1,4 @@
-const db = require('../../models/db');
+const db = require('../../../models/News/db_News');
 
 
 module.exports = async(req,res,next)=>{
@@ -17,7 +17,4 @@ module.exports = async(req,res,next)=>{
     },(err)=>{
         res.status(400).json({ err: err.message });
     });
-    
-
-    
 }

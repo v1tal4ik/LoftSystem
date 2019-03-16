@@ -1,5 +1,5 @@
-const db = require('../../models/db');
-const configDir = require('../../config/upload.json');
+const db = require('../../../models/User/db_User');
+const configDir = require('../../../config/upload.json');
 const formidable = require('formidable');
 const path = require('path');
 const fs = require('fs');

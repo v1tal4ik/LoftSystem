@@ -1,9 +1,10 @@
-const db = require('../../models/db');
+const db = require('../../../models/News/db_News');
+const dnU = require('../../../models/User/db_User');
 
 
 module.exports = async(req,res,next)=>{
     const data = JSON.parse(req.body);
-    const user = await db.getById(data.userId);
+    const user = await dnU.getById(data.userId);
     const {date,text,theme }= data;
     //user.id = user._id;    
     

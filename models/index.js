@@ -10,7 +10,7 @@ mongoose.connect(uri, {
 
 mongoose.connection.on('connected', () => {
   console.log(
-    'Mongoose connection open mongodb://root:567234@ds121965.mlab.com:21965/it651'
+    'Mongoose connection open mongoDB by v1tal4ik'
   );
 });
 

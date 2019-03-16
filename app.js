@@ -53,6 +53,9 @@ server.listen(port ,()=>{
 
 io.on('connection', socket =>{
     console.log('connection');
+    socket.send({
+        extraHeader 
+    })
 });
 
 
