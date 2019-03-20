@@ -6,6 +6,7 @@ const deleteUserById  = require('./methods/User/deleteUserById');
 const updateUserById  = require('./methods/User/updateUserById');
 const saveUserImageById  = require('./methods/User/saveUserImageById');
 const updateUserPermission  = require('./methods/User/updateUserPermission');
+const authFromToken  = require('./methods/User/authFromToken');
 
 const getNews  = require('./methods/News/getNews');
 const newNews  = require('./methods/News/newNews');
@@ -22,6 +23,7 @@ module.exports.deleteUserById  = deleteUserById;
 module.exports.updateUserById  = updateUserById;
 module.exports.saveUserImageById  = saveUserImageById;
 module.exports.updateUserPermission  = updateUserPermission;
+module.exports.authFromToken  = authFromToken;
 
 module.exports.getNews  = getNews;
 module.exports.newNews  = newNews;

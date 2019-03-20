@@ -51,11 +51,34 @@ server.listen(port ,()=>{
 /*************** SOCKET **************************/
 
 
-io.on('connection', socket =>{
-    console.log('connection');
-    socket.send({
-        extraHeader 
-    })
-});
+usersConnect = {
+    //'9nme5a-JYtnFix7qAAAB': { id: '9nme5a-JYtnFix7qAAAB', username: 'Support' }
+};
 
+io.on('connection', socket => {
+    let user = {
+      id: socket.id,
+      username: socket.handshake.headers.username
+    };
+    usersConnect[socket.id] = user;
 
+    let arrOfOtherUsers = {};
+    for (let i in usersConnect){
+        if(user.id !== i){
+            arrOfOtherUsers[i] = usersConnect[i]
+           io.sockets.emit('new user', user);
+        }
+    };
+    socket.emit('all users', arrOfOtherUsers);
+    
+    
+    
+    socket.on('chat message', function (msg, user) {
+      socket.broadcast.to(user).emit('chat message', msg, socket.id);
+    });
+
+    socket.on('disconnect', function () {
+      io.sockets.emit('delete user', socket.id);
+      delete usersConnect[socket.id];
+    });
+  });

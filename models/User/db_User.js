@@ -14,6 +14,10 @@ module.exports.getById = function(id){
     return Users.findById(id);
 } 
 
+module.exports.getByToken = function(token){
+    return Users.findOne({access_token:token});
+}
+
 module.exports.saveNewUser = function(obj) {
     const data = JSON.parse(obj);
     const token = uuidv4();
