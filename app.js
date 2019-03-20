@@ -52,7 +52,7 @@ server.listen(port ,()=>{
 
 
 usersConnect = {
-    //'9nme5a-JYtnFix7qAAAB': { id: '9nme5a-JYtnFix7qAAAB', username: 'Support' }
+    '9nme5a-JYtnFix7qAAAB': { id: '9nme5a-JYtnFix7qAAAB', username: 'Support' }
 };
 
 io.on('connection', socket => {
