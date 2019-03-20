@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 //const dbConfig = require('../config/dbConfig.json');
+//const uri = `mongodb+srv://${dbConfig.name}:${dbConfig.password}@cluster0-lhjmc.gcp.mongodb.net/loftSystem?retryWrites=true`;
 const uri = process.env.uriDB;
 console.log(uri);
 
