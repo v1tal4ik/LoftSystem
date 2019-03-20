@@ -4,7 +4,8 @@
   "description": "Большая домашняя работа курса по Node.js - Корпоративная система _\"LoftSystem\"_.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Test finished\" && exit 0"
+    "test": "echo \"Test finished\" && exit 0",
+    "start" : "node app.js"
   },
   "author": "",
   "license": "ISC",
